@@ -1,0 +1,10 @@
+{
+  "name": "blockchain",
+  "version": "1.0.0",
+  "description": "Blockchain implementation with Node.js.",
+  "main": "index.js",
+  "repository": "https://github.com/rapsealk/blockchain.git",
+  "author": "rapsealk <piono623@naver.com>",
+  "license": "MIT",
+  "private": false
+}
