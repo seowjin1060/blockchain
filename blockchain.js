@@ -1,4 +1,4 @@
-import crypto from 'crypto';
+const crypto = require('crypto');
 
 const key = 'https://github.com/rapsealk/blockchain.git';
 
@@ -44,5 +44,19 @@ class Blockchain {
 
     set last_block() {
         return;
+    }
+
+    proof_of_work(last_proof) {
+        let proof = 0;
+        while (this.valid_proof(last_proof, proof) == false) {
+            proof += 1;
+        }
+        return proof;
+    }
+
+    static valid_proof(last_proof, proof) {
+        let guess = (last_proof * proof).toString();
+        let guess_hash = crypto.createHmac('sha256', key).update(guess).digest('hex');
+        return guess_hash.slice(0, 4) == '0000';    // difficulty, nonce
     }
 }
