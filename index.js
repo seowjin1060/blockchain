@@ -3,6 +3,9 @@ const Router = require('koa-router');
 
 const app = new Koa();
 
+const KoaBody = require('koa-body');
+app.use(KoaBody());
+
 app.use(async (context, next) => {
     let start = Date.now();
     await next();
@@ -17,7 +20,7 @@ const transaction = new Router({ prefix: '/transaction' });
 
 chain.get('/', require('./controllers/chain').get);
 mine.get('/', require('./controllers/mine').get);
-transaction.post('/', require('./controllers/transaction').post['new']);
+transaction.post('/new', require('./controllers/transaction').post['new']);
 
 app.use(chain.routes());
 app.use(mine.routes());

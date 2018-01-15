@@ -1,8 +1,16 @@
+const blockchain = require('../blockchain');
+
 const post = {
     new: async (context) => {
-        console.log('POST /transaction/new');
-        context.body = "A new transaction will be added."
-        console.log('context.body:', context.body);
+        const { sender, recipient, amount } = context.request.body;
+        if (!sender || !recipient || !amount) {
+            context.body = "missing values.";
+            return;
+        }
+        let index = blockchain.new_transaction(sender, recipient, amount);
+        context.body = {
+            "message": `Transaction will be added to Block ${index}.`
+        }
     }
 };
 

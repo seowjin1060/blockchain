@@ -1,5 +1,4 @@
-const Blockchain = require('../blockchain');
-const blockchain = new Blockchain();
+const blockchain = require('../blockchain');
 
 exports.get = async (context) => {
     console.log('GET /chain');

@@ -12,6 +12,8 @@
   },
   "devDependencies": {
     "koa": "^2.4.1",
-    "koa-router": "^7.3.0"
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.3.0",
+    "uuid4": "^1.0.0"
   }
 }
