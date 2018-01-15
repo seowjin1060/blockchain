@@ -20,12 +20,12 @@ class Blockchain {
             "previous_hash": previous_hash || this.hash(this.chain[this.chain.length-1])
         }
         this.current_transaction = [];
-        this.chain.append(block);
+        this.chain.push(block);
         return block;
     }
 
     new_transaction(sender, recipient, amount) {
-        this.current_transaction.append({
+        this.current_transaction.push({
             "sender": sender,
             "recipient": recipient,
             "amount": amount
@@ -42,9 +42,9 @@ class Blockchain {
         return this.chain[this.chain.length-1];
     }
 
-    set last_block() {
-        return;
-    }
+    // set last_block() {
+    //     return;
+    // }
 
     proof_of_work(last_proof) {
         let proof = 0;
@@ -60,3 +60,5 @@ class Blockchain {
         return guess_hash.slice(0, 4) == '0000';    // difficulty, nonce
     }
 }
+
+module.exports = Blockchain;
